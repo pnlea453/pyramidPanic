@@ -66,7 +66,7 @@ namespace PyramidPanic
             if ((GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed) || 
                 (Keyboard.GetState().IsKeyDown(Keys.Escape)))
                 this.Exit();
-
+            
            
 
             base.Update(gameTime);
