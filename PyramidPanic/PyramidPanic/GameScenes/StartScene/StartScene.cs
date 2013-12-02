@@ -13,7 +13,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace PyramidPanic
 {
-   public class StartScene
+   public class StartScene : IState // De class StartScene implementeert de interface IState
     {
        //Fields van de class StartScene
        private PyramidePanic game;
@@ -38,13 +38,17 @@ namespace PyramidPanic
        }
        //Update methode. Deze methode wordt normaal 60 maal per seconde aangeroepen.
        // en update alle variabelen, methods enz........
-       public void Update()
+       public void Update(GameTime GameTime)
        {
+           if (Input.EdgeDetectKeyDown(Keys.Right) || Input.EdgeDetectMousePressLeft())
+           {
+               this.game.IState = this.game.PlayScene;
+           }
 
        }
        // Draw methode. Deze methode wordt normaal 60 maal per seconde aangeroepen en
        // tekent de tectures op het canvas.
-       public void Draw()
+       public void Draw(GameTime GameTime)
        {
 
            this.game.GraphicsDevice.Clear(Color.Aquamarine);

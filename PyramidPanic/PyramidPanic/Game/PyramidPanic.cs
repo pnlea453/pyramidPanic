@@ -26,11 +26,56 @@ namespace PyramidPanic
         private PlayScene playScene;
 
         // Maak een variabele aan van het type HelpScene 
-        private HelpScene helpscene;
+        private HelpScene helpScene;
 
         // Maak een variabele aan van het type GameOverScene
-        private GameOverScene GameOverScene;
+        private GameOverScene gameOverScene;
 
+        // Maak een variable aan van het type Istate
+        private IState iState;
+
+        #region Properties
+        // Properties
+        // Maak de interface variabele iState beschikbaar buiten de class d.m.v
+        // een property Istate
+        public IState IState
+        {
+            get { return this.IState; }
+            set { this.iState = value; }
+        }
+
+        // Maak het field this.startScene beschikbaar buiten de class d.m.v
+        // property StartScene
+        public StartScene StartScene
+        {
+            get { return this.startScene; }
+
+        }
+
+        // Maak het field this.startScene beschikbaar buiten de class d.m.v
+        // property StartScene
+        public PlayScene PlayScene
+        {
+            get { return this.playScene; }
+
+        }
+
+        // Maak het field this.helpscene beschikbaar buiten de class d.m.v
+        // property StartScene
+        public HelpScene HelpScene
+        {
+            get { return this.helpScene; }
+
+        }
+
+        // Maak het field this.startScene beschikbaar buiten de class d.m.v
+        // property StartScene
+        public GameOverScene GameOverScene
+        {
+            get { return this.gameOverScene; }
+
+        } 
+        #endregion
         // Dit is de constructor. heeft altijd dezelfde naam als de class
         public PyramidePanic()
         {
@@ -68,8 +113,11 @@ namespace PyramidPanic
           // de constructor aan te roepen van de StartScene class.
             this.startScene = new StartScene(this);
             this.playScene = new PlayScene(this);
-            this.helpscene = new HelpScene(this);
-            this.GameOverScene = new GameOverScene(this);
+            this.helpScene = new HelpScene(this);
+            this.gameOverScene = new GameOverScene(this);
+
+            this.iState = this.startScene;
+            
         }
 
        
@@ -85,19 +133,13 @@ namespace PyramidPanic
             if ((GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed) || 
                 (Keyboard.GetState().IsKeyDown(Keys.Escape)))
                 this.Exit();
+            // De update methode van de static Input class wordt aangeroepen
+            Input.Update();
            
-            
-            // Roep de Update methode aan van de StartScene class
-            this.startScene.Update();
+            // De Update methode van het object dat toegwezen is aan het interface-object
+            // this.IState wordt aangeroepen
+            this.iState.Update(gameTime);
 
-            // Roep de Update methode aan van de PlayScene class
-            this.playScene.Update();
-
-            // Roep de Update methode aan van de HelpScene class
-            this.helpscene.Update();
-
-            // Roep de Update methode aan van de gameOverScene class
-            this.GameOverScene.Update();
             base.Update(gameTime);
         }
 
@@ -109,26 +151,15 @@ namespace PyramidPanic
             
             // Voor een spriteBatch instantie iets kan tekenen moet de Begin() methode 
             // aangeroepen worden
-            this.spriteBatch.Begin();
+             this.spriteBatch.Begin();
 
-            // Roep de Draw methode aan van de StartScene class
-            this.startScene.Draw();
-
-            // Roep de Draw methode aan van de playScene class
-            this.playScene.Draw();
-
-            // Roep de Draw methode aan van de helpScene class
-            this.helpscene.Draw();
-
-            // Roep de Draw methode aan van de GameOverScene class
-            this.GameOverScene.Draw();
-
+             // De Draw methode van het object dat toegwezen is aan het interface-object
+             // this.IState wordt aangeroepen
+            this.iState.Draw(gameTime);
 
             // Nadat de spriteBatch.Draw() is aangeroepen moet de End() methode van de 
             // SpriteBatch class worden aangeroepen
             this.spriteBatch.End();
-
-        
 
             base.Draw(gameTime);
         }
