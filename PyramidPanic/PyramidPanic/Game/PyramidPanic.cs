@@ -17,6 +17,19 @@ namespace PyramidPanic
         //Fields 
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
+        
+
+        // Maak een variabele aan van het type StartScene 
+        private StartScene startScene;
+
+        // Maak een variabele aan van het type PlayScene 
+        private PlayScene playScene;
+
+        // Maak een variabele aan van het type HelpScene 
+        private HelpScene helpscene;
+
+        // Maak een variabele aan van het type GameOverScene
+        private GameOverScene GameOverScene;
 
         // Dit is de constructor. heeft altijd dezelfde naam als de class
         public PyramidePanic()
@@ -51,6 +64,12 @@ namespace PyramidPanic
           // Een spritebatch is nodig voor het tekenen van tetures op het canvas
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+          // We maken nu het object/instantie aan van het type StartScene. Dit doe je door
+          // de constructor aan te roepen van de StartScene class.
+            this.startScene = new StartScene(this);
+            this.playScene = new PlayScene(this);
+            this.helpscene = new HelpScene(this);
+            this.GameOverScene = new GameOverScene(this);
         }
 
        
@@ -66,9 +85,19 @@ namespace PyramidPanic
             if ((GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed) || 
                 (Keyboard.GetState().IsKeyDown(Keys.Escape)))
                 this.Exit();
-            
            
+            
+            // Roep de Update methode aan van de StartScene class
+            this.startScene.Update();
 
+            // Roep de Update methode aan van de PlayScene class
+            this.playScene.Update();
+
+            // Roep de Update methode aan van de HelpScene class
+            this.helpscene.Update();
+
+            // Roep de Update methode aan van de gameOverScene class
+            this.GameOverScene.Update();
             base.Update(gameTime);
         }
 
@@ -76,7 +105,28 @@ namespace PyramidPanic
         protected override void Draw(GameTime gameTime)
         {
             // Geeft de achtergrond een kleur
-            GraphicsDevice.Clear(Color.DimGray);
+            GraphicsDevice.Clear(Color.Black);
+            
+            // Voor een spriteBatch instantie iets kan tekenen moet de Begin() methode 
+            // aangeroepen worden
+            this.spriteBatch.Begin();
+
+            // Roep de Draw methode aan van de StartScene class
+            this.startScene.Draw();
+
+            // Roep de Draw methode aan van de playScene class
+            this.playScene.Draw();
+
+            // Roep de Draw methode aan van de helpScene class
+            this.helpscene.Draw();
+
+            // Roep de Draw methode aan van de GameOverScene class
+            this.GameOverScene.Draw();
+
+
+            // Nadat de spriteBatch.Draw() is aangeroepen moet de End() methode van de 
+            // SpriteBatch class worden aangeroepen
+            this.spriteBatch.End();
 
         
 

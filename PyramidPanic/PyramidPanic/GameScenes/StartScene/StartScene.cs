@@ -16,10 +16,12 @@ namespace PyramidPanic
    public class StartScene
     {
        //Fields van de class StartScene
+       private PyramidePanic game;
 
-       // Constructor van de StartScene-class
-       public StartScene()
+       // Constructor van de StartScene-class krijgt een object game mee van he type PyramidPanic
+       public StartScene(PyramidePanic game)
        {
+           this.game = game;
 
        }
        // Intialize methode. Deze methode initialiseert (geeft startwaarden aan variabelen)
@@ -44,7 +46,8 @@ namespace PyramidPanic
        // tekent de tectures op het canvas.
        public void Draw()
        {
-        
+
+           this.game.GraphicsDevice.Clear(Color.Aquamarine);
 
        }
     }
