@@ -29,6 +29,8 @@ namespace PyramidPanic
         private Image scores;
         private Image quit;
 
+        //
+        private Color activeColor = Color.Gold;
 
         //Maak een variable (reference) van het type PyramidPanic
         private PyramidePanic game;
@@ -54,29 +56,38 @@ namespace PyramidPanic
             this.help = new Image(this.game, @"StartScene\Button_help", new Vector2(260f, 420f));
             this.scores = new Image(this.game, @"StartScene\Button_scores", new Vector2(380f, 420f));
             this.quit = new Image(this.game, @"StartScene\Button_quit", new Vector2(500f, 420f));
-            this.start.Color = Color.Gold;
+           
         }
 
         //Update
         public void Update(GameTime gameTime)
         {
+            
+            // Deze if - instructie checked of er op de rechterpijltoets wordt gedrukt.
+            // De actie die daarop volgt is het ophogen van de variable buttonActive
+            if (Input.EdgeDetectKeyDown(Keys.Right))
+            {
+                this.buttonActive++;
+            }
+
+
             // Maak een switch case instructie voor de variabele buttonActive
             switch (this.buttonActive)
             {
                 case Buttons.Start:
-
+                    this.start.Color = this.activeColor;
                     break;
                 case Buttons.Load:
-
+                    this.load.Color = this.activeColor;
                     break;
                 case Buttons.Help:
-
+                    this.help.Color = this.activeColor;
                     break;
                 case Buttons.Scores:
-
+                    this.scores.Color = this.activeColor;
                     break;
                 case Buttons.Quit:
-
+                    this.quit.Color = this.activeColor;
                     break;
 
             }
