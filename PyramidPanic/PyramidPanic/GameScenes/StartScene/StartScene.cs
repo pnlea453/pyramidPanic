@@ -18,6 +18,10 @@ namespace PyramidPanic
        //Fields van de class StartScene
        private PyramidePanic game;
 
+       // Maak een variavle (reference) aan van de Image Class genaamd Background
+       private Image background;
+       private Image title;
+
        // Constructor van de StartScene-class krijgt een object game mee van he type PyramidPanic
        public StartScene(PyramidePanic game)
        {
@@ -34,7 +38,11 @@ namespace PyramidPanic
        // classes.
        public void LoadContent()
        {
+           // Nu maken we een object (instantie) van de class Image
+           this.background = new Image();
 
+           // Nu maken we een object (instantie) van de class Image
+           this.title = new Image();
        }
        //Update methode. Deze methode wordt normaal 60 maal per seconde aangeroepen.
        // en update alle variabelen, methods enz........

@@ -17,6 +17,7 @@ namespace PyramidPanic
         //Fields 
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
+         
         
 
         // Maak een variabele aan van het type StartScene 
