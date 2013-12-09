@@ -27,26 +27,32 @@ namespace PyramidPanic
        {
            this.game = game;
 
+           // Roep de Initialize method aan
+           this.Intialize();
+
        }
        // Intialize methode. Deze methode initialiseert (geeft startwaarden aan variabelen)
        // Void wil zeggen dat er niets teruggegeven wordt.
        public void Intialize()
        {
-
+           // Roep de LoadContent method aan
+           this.LoadContent();
        }
+
        // LoadConctent methode. Deze methode maakt nieuwe objecten aan van de verschillende
        // classes.
        public void LoadContent()
        {
            // Nu maken we een object (instantie) van de class Image
-           this.background = new Image();
+           this.background = new Image(this.game, @"StartScene\Background", Vector2.Zero);
 
            // Nu maken we een object (instantie) van de class Image
-           this.title = new Image();
+           this.title = new Image(this.game, @"StartScene\Title", new Vector2(100f, 50f));
        }
+
        //Update methode. Deze methode wordt normaal 60 maal per seconde aangeroepen.
        // en update alle variabelen, methods enz........
-       public void Update(GameTime GameTime)
+       public void Update(GameTime gameTime)
        {
            if (Input.EdgeDetectKeyDown(Keys.Right) || Input.EdgeDetectMousePressLeft())
            {
@@ -56,10 +62,11 @@ namespace PyramidPanic
        }
        // Draw methode. Deze methode wordt normaal 60 maal per seconde aangeroepen en
        // tekent de tectures op het canvas.
-       public void Draw(GameTime GameTime)
+       public void Draw(GameTime gameTime)
        {
 
            this.game.GraphicsDevice.Clear(Color.Aquamarine);
+           this.background.Draw(gameTime);
 
        }
     }
