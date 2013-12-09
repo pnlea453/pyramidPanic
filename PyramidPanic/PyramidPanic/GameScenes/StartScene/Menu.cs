@@ -29,8 +29,11 @@ namespace PyramidPanic
         private Image scores;
         private Image quit;
 
-        //
+        // ActiveColor
         private Color activeColor = Color.Gold;
+
+        // Maak een variabele van het type List <Image>
+        private List<Image> buttonList;
 
         //Maak een variable (reference) van het type PyramidPanic
         private PyramidePanic game;
@@ -51,11 +54,14 @@ namespace PyramidPanic
 
         public void LoadContent()
         {
-            this.start = new Image(this.game, @"StartScene\Button_start", new Vector2(20f, 420f));
-            this.load = new Image(this.game, @"StartScene\Button_load", new Vector2(140f, 420f));
-            this.help = new Image(this.game, @"StartScene\Button_help", new Vector2(260f, 420f));
-            this.scores = new Image(this.game, @"StartScene\Button_scores", new Vector2(380f, 420f));
-            this.quit = new Image(this.game, @"StartScene\Button_quit", new Vector2(500f, 420f));
+            // Maak een instantie aan van de List<Image>
+            this.buttonList = new List<Image>();
+            this.buttonList.Add(this.start = new Image(this.game, @"StartScene\Button_start", new Vector2(20f, 420f)));
+            this.buttonList.Add(this.load = new Image(this.game, @"StartScene\Button_load", new Vector2(140f, 420f)));
+            this.buttonList.Add(this.help = new Image(this.game, @"StartScene\Button_help", new Vector2(260f, 420f)));
+            this.buttonList.Add(this.scores = new Image(this.game, @"StartScene\Button_scores", new Vector2(380f, 420f)));
+            this.buttonList.Add(this.quit = new Image(this.game, @"StartScene\Button_quit", new Vector2(500f, 420f)));
+           
            
         }
 
@@ -68,6 +74,22 @@ namespace PyramidPanic
             if (Input.EdgeDetectKeyDown(Keys.Right))
             {
                 this.buttonActive++;
+            }
+
+            // Deze if - instructie checked of er op de linkerpijltoets wordt gedrukt.
+            // De actie die daarop volgt is het verlagen van de variable buttonActive
+            if (Input.EdgeDetectKeyDown(Keys.Left))
+            {
+                this.buttonActive--;
+            }
+
+            /* We doorlopen het this.buttonlist object (type list<image>) met een foreach instructie
+             * en we roepen voor ieder image object de propertie Color op en geven deze 
+             * de waarde Color.White.
+             */
+            foreach (Image image in this.buttonList)
+            {
+                image.Color = Color.White;
             }
 
 
