@@ -145,6 +145,7 @@ namespace PyramidPanic
             this.loadScene = new LoadScene(this);
             this.scoresScene = new ScoresScene(this);
 
+
             this.iState = this.startScene;
             
         }
