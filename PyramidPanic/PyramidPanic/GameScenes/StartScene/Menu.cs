@@ -85,48 +85,6 @@ namespace PyramidPanic
                 this.buttonActive--;
             }
 
-          
-            // Maak een switch case instructie voor de variabele buttonActive
-            switch (this.buttonActive)
-            {
-                case Buttons.Start:
-                    if (Input.EdgeDetectKeyDown(Keys.Enter))
-                    {
-                        this.game.IState = this.game.PlayScene;
-                    }
-                    else
-                    {
-
-
-                    }
-                    // De Ternary operator: variabele = () ? Waarde als waar : waarde als niet waar
-                    this.game.IState = (Input.EdgeDetectKeyDown(Keys.Enter)) 
-                        ? (IState)this.game.PlayScene : this.game.StartScene;
-                    this.start.Color = this.activeColor;
-                    break;
-                case Buttons.Load:
-                    if (Input.EdgeDetectKeyDown(Keys.Enter))
-                    {
-                        this.game.IState = this.game.LoadScene;
-                    }
-                    this.load.Color = this.activeColor;
-                    break;
-                case Buttons.Help:
-                    this.help.Color = this.activeColor;
-                    break;
-                case Buttons.Scores:
-                    if (Input.EdgeDetectKeyDown(Keys.Enter))
-                    {
-                        this.game.IState = this.game.ScoresScene;
-                    }
-                    this.scores.Color = this.activeColor;
-                    break;
-                case Buttons.Quit:
-                    this.quit.Color = this.activeColor;
-                    break;
-
-            }
-
             if (this.start.Rectangle.Intersects(Input.MouseRect()))
             {
                 if (Input.EdgeDetectMousePressLeft())
@@ -167,7 +125,39 @@ namespace PyramidPanic
             else
             {
                 this.ChangeButtonColorToNormal();
-                this.start.Color = this.activeColor;
+
+                // Maak een switch case instructie voor de variabele buttonActive
+                switch (this.buttonActive)
+                {
+                    case Buttons.Start:
+
+                        // De Ternary operator: variabele = () ? Waarde als waar : waarde als niet waar
+                        this.game.IState = (Input.EdgeDetectKeyDown(Keys.Enter))
+                            ? (IState)this.game.PlayScene : this.game.StartScene;
+                        this.start.Color = this.activeColor;
+                        break;
+                    case Buttons.Load:
+                        if (Input.EdgeDetectKeyDown(Keys.Enter))
+                        {
+                            this.game.IState = this.game.LoadScene;
+                        }
+                        this.load.Color = this.activeColor;
+                        break;
+                    case Buttons.Help:
+                        this.help.Color = this.activeColor;
+                        break;
+                    case Buttons.Scores:
+                        if (Input.EdgeDetectKeyDown(Keys.Enter))
+                        {
+                            this.game.IState = this.game.ScoresScene;
+                        }
+                        this.scores.Color = this.activeColor;
+                        break;
+                    case Buttons.Quit:
+                        this.quit.Color = this.activeColor;
+                        break;
+
+                }
             }
         }
 
