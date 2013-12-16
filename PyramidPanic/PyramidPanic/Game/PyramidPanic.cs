@@ -32,6 +32,12 @@ namespace PyramidPanic
         // Maak een variabele aan van het type GameOverScene
         private GameOverScene gameOverScene;
 
+        // Maak een variabele aan van het type LoadScene
+        private LoadScene loadScene;
+
+        // Maak een variabele aan van het type ScoresScene
+        private ScoresScene scoresScene;
+
         // Maak een variable aan van het type Istate
         private IState iState;
 
@@ -75,6 +81,20 @@ namespace PyramidPanic
         {
             get { return this.gameOverScene; }
 
+        }
+        
+        // Maak het field this.startScene beschikbaar buiten de class d.m.v
+        // property StartScene
+        public LoadScene LoadScene
+        {
+            get { return this.loadScene;  }
+        }
+      
+        // Maak het field this.startScene beschikbaar buiten de class d.m.v
+        // property StartScene
+        public ScoresScene ScoresScene
+        {
+            get { return this.scoresScene; }
         }
         // Maak het field this.spriteBatch beschikbaar buiten de class d.m.v
         // property SpriteBatch
@@ -122,6 +142,8 @@ namespace PyramidPanic
             this.playScene = new PlayScene(this);
             this.helpScene = new HelpScene(this);
             this.gameOverScene = new GameOverScene(this);
+            this.loadScene = new LoadScene(this);
+            this.scoresScene = new ScoresScene(this);
 
             this.iState = this.startScene;
             
