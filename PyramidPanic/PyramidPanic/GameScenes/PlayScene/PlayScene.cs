@@ -40,9 +40,9 @@ namespace PyramidPanic
         // en update alle variabelen, methods enz........
         public void Update(GameTime GameTime)
         {
-            if (Input.EdgeDetectKeyDown(Keys.Right) || Input.EdgeDetectMousePressLeft())
+            if (Input.EdgeDetectKeyDown(Keys.B))
             {
-                this.game.IState = this.game.GameOverScene;
+                this.game.IState = this.game.StartScene;
             }
 
         }

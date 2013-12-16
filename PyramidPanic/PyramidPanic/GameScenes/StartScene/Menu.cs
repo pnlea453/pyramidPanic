@@ -73,6 +73,7 @@ namespace PyramidPanic
             // De actie die daarop volgt is het ophogen van de variable buttonActive
             if (Input.EdgeDetectKeyDown(Keys.Right))
             {
+                this.ChangeButtonColorToNormal();
                 this.buttonActive++;
             }
 
@@ -80,23 +81,27 @@ namespace PyramidPanic
             // De actie die daarop volgt is het verlagen van de variable buttonActive
             if (Input.EdgeDetectKeyDown(Keys.Left))
             {
+                this.ChangeButtonColorToNormal();
                 this.buttonActive--;
             }
 
-            /* We doorlopen het this.buttonlist object (type list<image>) met een foreach instructie
-             * en we roepen voor ieder image object de propertie Color op en geven deze 
-             * de waarde Color.White.
-             */
-            foreach (Image image in this.buttonList)
-            {
-                image.Color = Color.White;
-            }
-
-
+          
             // Maak een switch case instructie voor de variabele buttonActive
             switch (this.buttonActive)
             {
                 case Buttons.Start:
+                    if (Input.EdgeDetectKeyDown(Keys.Enter))
+                    {
+                        this.game.IState = this.game.PlayScene;
+                    }
+                    else
+                    {
+
+
+                    }
+                    // De Ternary operator: variabele = () ? Waarde als waar : waarde als niet waar
+                    this.game.IState = (Input.EdgeDetectKeyDown(Keys.Enter)) 
+                        ? (IState)this.game.PlayScene : this.game.StartScene;
                     this.start.Color = this.activeColor;
                     break;
                 case Buttons.Load:
@@ -120,16 +125,27 @@ namespace PyramidPanic
         //Draw
         public void Draw(GameTime gameTime)
         {
-            this.start.Draw(gameTime);
-            this.load.Draw(gameTime);
-            this.help.Draw(gameTime);
-            this.scores.Draw(gameTime);
-            this.quit.Draw(gameTime);
 
+            foreach (Image image in this.buttonList)
+            {
+                image.Draw(gameTime);
+            }
 
         }
 
-
+        /* Helper method voor het met wit licht beschijnen van de buttons
+         */
+        private void ChangeButtonColorToNormal()
+        {
+            /* We doorlopen het this.buttonlist object (type list<image>) met een foreach instructie
+            * en we roepen voor ieder image object de propertie Color op en geven deze 
+            * de waarde Color.White.
+            */
+            foreach (Image image in this.buttonList)
+            {
+                image.Color = Color.White;
+            }
+        }
 
     }
 }
