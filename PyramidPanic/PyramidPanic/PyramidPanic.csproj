@@ -108,10 +108,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameScenes\AnimatedSprite\AnimatedSprite.cs" />
     <Compile Include="GameScenes\GameOverScene\GameOverScene.cs" />
     <Compile Include="GameScenes\HelpScene\HelpScene.cs" />
     <Compile Include="GameScenes\LoadScene\LoadScene.cs" />
+    <Compile Include="GameScenes\PlayScene\Beetle\Beetle.cs" />
+    <Compile Include="GameScenes\PlayScene\Beetle\IEntityState.cs" />
+    <Compile Include="GameScenes\PlayScene\Beetle\WalkDown.cs" />
+    <Compile Include="GameScenes\PlayScene\Beetle\WalkUp.cs" />
     <Compile Include="GameScenes\PlayScene\PlayScene.cs" />
+    <Compile Include="GameScenes\PlayScene\Scorpion\Scorpion.cs" />
+    <Compile Include="GameScenes\PlayScene\Scorpion\WalkLeft.cs" />
+    <Compile Include="GameScenes\PlayScene\Scorpion\WalkRight.cs" />
     <Compile Include="GameScenes\QuitScene\QuitScene.cs" />
     <Compile Include="GameScenes\ScoresScene\ScoresScene.cs" />
     <Compile Include="GameScenes\StartScene\Menu.cs" />
@@ -160,6 +168,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="GameScenes\PlayScene\Explorer\" />
     <Folder Include="Input\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
