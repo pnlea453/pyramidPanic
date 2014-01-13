@@ -15,18 +15,17 @@ namespace PyramidPanic
    public abstract class AnimatedSprite
     {
        //Fields
-       private Beetle beetle;
-       private Scorpion scorpion;
+       private IAnimatedSprite iAnimatedSprite;
+       
        protected Rectangle destinationRectangle, sourceRectangle;
        private float timer = 0f;
        protected SpriteEffects effect;
 
        //De constructor
-       public AnimatedSprite(Beetle beetle, Scorpion scorpion)
+       public AnimatedSprite(IAnimatedSprite iAnimatedSprite)
        {
 
-           this.beetle = beetle;
-           this.scorpion = scorpion;
+           this.iAnimatedSprite = iAnimatedSprite;
            this.sourceRectangle = new Rectangle(0, 0, 32, 32);
            
            this.effect = SpriteEffects.None;
