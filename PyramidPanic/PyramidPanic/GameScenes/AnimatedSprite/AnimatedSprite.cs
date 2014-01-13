@@ -59,7 +59,7 @@ namespace PyramidPanic
        public void Draw(GameTime gameTime)
        {
           
-           this.beetle.Game.SpriteBatch.Draw(this.beetle.Texture,
+           this.iAnimatedSprite.Game.SpriteBatch.Draw(this.iAnimatedSprite.Texture,
                                       this.destinationRectangle,
                                       this.sourceRectangle,
                                       Color.White,

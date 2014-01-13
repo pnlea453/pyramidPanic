@@ -22,7 +22,7 @@ namespace PyramidPanic
         private Scorpion scorpion;
 
         //Constructor
-        public WalkLeft(Scorpion scorpion) : base(beetle)
+        public WalkLeft(Scorpion scorpion) : base(scorpion)
         {
             this.scorpion = scorpion;
             this.effect = SpriteEffects.FlipHorizontally;
