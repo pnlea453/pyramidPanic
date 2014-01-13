@@ -21,7 +21,20 @@ namespace PyramidPanic
         private int speed = 2;
         private Vector2 position;
 
+        // Maak van iedere toestand (state) een field
+        private WalkUp walkUp;
+        private WalkDown walkDown;
+
         //Properties
+        public WalkUp WalkUp
+        {
+            get { return this.walkUp; }
+        }
+
+        public WalkDown WalkDown
+        {
+            get { return this.walkDown; }
+        }
         public Vector2 Position
         {
             get { return this.position; }
@@ -54,7 +67,9 @@ namespace PyramidPanic
             this.game = game;
             this.position = position;
             this.texture = game.Content.Load<Texture2D>(@"Beetle\Beetle");
-            this.state = new WalkUp(this);
+            this.walkUp = new WalkUp(this);
+            this.walkDown = new WalkDown(this);
+            this.state = this.walkUp;
 
         }
 

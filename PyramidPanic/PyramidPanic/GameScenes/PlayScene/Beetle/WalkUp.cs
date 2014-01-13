@@ -34,7 +34,8 @@ namespace PyramidPanic
         {
             if (this.beetle.Position.Y < 0)
             {
-                this.beetle.State = new WalkDown(this.beetle);
+                this.beetle.State = this.beetle.WalkDown;
+
             }
             this.beetle.Position -= new Vector2(0f, this.beetle.Speed);
             this.destinationRectangle.X = (int)this.beetle.Position.X;
