@@ -28,7 +28,12 @@ namespace PyramidPanic
             this.effect = SpriteEffects.FlipVertically;
             this.destinationRectangle = new Rectangle((int)this.beetle.Position.X, (int)this.beetle.Position.Y, 32, 32);
         }
-
+       
+        public void Initialize()
+        {
+            this.destinationRectangle.X = (int)this.beetle.Position.X;
+            this.destinationRectangle.Y = (int)this.beetle.Position.Y;
+        }
 
 
         public new void Update(GameTime gameTime)
@@ -36,6 +41,7 @@ namespace PyramidPanic
             if (this.beetle.Position.Y > 480 - 32)
             {
                 this.beetle.State = this.beetle.WalkUp;
+                this.beetle.WalkUp.Initialize();
             }
             this.beetle.Position += new Vector2(0f, this.beetle.Speed);
             this.destinationRectangle.X = (int)this.beetle.Position.X;
