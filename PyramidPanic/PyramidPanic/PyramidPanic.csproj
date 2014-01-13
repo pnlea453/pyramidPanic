@@ -109,6 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameScenes\AnimatedSprite\AnimatedSprite.cs" />
+    <Compile Include="GameScenes\AnimatedSprite\IAnimatedSprite.cs" />
     <Compile Include="GameScenes\GameOverScene\GameOverScene.cs" />
     <Compile Include="GameScenes\HelpScene\HelpScene.cs" />
     <Compile Include="GameScenes\LoadScene\LoadScene.cs" />
