@@ -21,7 +21,20 @@ namespace PyramidPanic
         private int speed = 2;
         private Vector2 position;
 
+        //Fields
+        private WalkLeft walkLeft;
+        private WalkRight walkRight;
+
         //Properties
+        public WalkLeft WalkLeft
+        {
+            get { return this.walkLeft; }
+        }
+
+        public WalkRight WalkRight
+        {
+            get { return this.walkRight; }
+        }
         public Vector2 Position
         {
             get { return this.position; }
@@ -54,7 +67,9 @@ namespace PyramidPanic
             this.game = game;
             this.position = position;
             this.texture = game.Content.Load<Texture2D>(@"Scorpion\Scorpion");
-            this.state = new WalkRight(this);
+            this.walkLeft = new WalkLeft(this);
+            this.walkRight = new WalkRight(this);
+            this.state = this.walkRight;
 
         }
 

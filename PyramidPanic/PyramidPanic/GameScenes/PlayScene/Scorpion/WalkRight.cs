@@ -28,13 +28,18 @@ namespace PyramidPanic
             this.destinationRectangle = new Rectangle((int)this.scorpion.Position.X, (int)this.scorpion.Position.Y, 32, 32);
         }
 
-
+        public void Initialize()
+        {
+            this.destinationRectangle.X = (int)this.scorpion.Position.X;
+            this.destinationRectangle.Y = (int)this.scorpion.Position.Y;
+        }
 
         public new void Update(GameTime gameTime)
         {
             if (this.scorpion.Position.X > 640 - 32)
             {
                 this.scorpion.State = new WalkLeft(this.scorpion);
+                this.scorpion.WalkLeft.Initialize();
             }
             this.scorpion.Position += new Vector2(this.scorpion.Speed, 0f);
             this.destinationRectangle.X = (int)this.scorpion.Position.X;
