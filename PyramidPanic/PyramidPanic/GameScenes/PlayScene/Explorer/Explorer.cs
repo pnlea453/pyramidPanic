@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace PyramidPanic
 {
-    public class Beetle : IAnimatedSprite
+    public class Explorer : IAnimatedSprite
     {
         //Fields
         private PyramidePanic game;
@@ -22,18 +22,28 @@ namespace PyramidPanic
         private Vector2 position;
 
         // Maak van iedere toestand (state) een field
-        private WalkUp walkUp;
-        private WalkDown walkDown;
+        private ExplorerWalkUp walkUp;
+        private ExplorerWalkDown walkDown;
+        private ExplorerWalkLeft walkLeft;
+        private ExplorerWalkRight walkRight;
 
         //Properties
-        public WalkUp WalkUp
+        public ExplorerWalkUp WalkUp
         {
             get { return this.walkUp; }
         }
 
-        public WalkDown WalkDown
+        public ExplorerWalkDown WalkDown
         {
             get { return this.walkDown; }
+        }
+        public ExplorerWalkRight WalkRight
+        {
+            get { return this.walkRight; }
+        }
+        public ExplorerWalkLeft WalkLeft
+        {
+            get { return this.walkLeft; }
         }
         public Vector2 Position
         {
@@ -62,14 +72,16 @@ namespace PyramidPanic
         }
 
         //Constructor
-        public Beetle (PyramidePanic game, Vector2 position) 
+        public Explorer (PyramidePanic game, Vector2 position) 
         {
             this.game = game;
             this.position = position;
-            this.texture = game.Content.Load<Texture2D>(@"Beetle\Beetle");
-            this.walkUp = new WalkUp(this);
-            this.walkDown = new WalkDown(this);
-            this.state = this.walkUp;
+            this.texture = game.Content.Load<Texture2D>(@"Explorer\Explorer");
+            this.walkUp = new ExplorerWalkUp(this);
+            this.walkDown = new ExplorerWalkDown(this);
+            this.walkRight = new ExplorerWalkRight(this);
+            this.walkLeft = new ExplorerWalkLeft(this);
+            this.state = this.walkRight;
 
         }
 
