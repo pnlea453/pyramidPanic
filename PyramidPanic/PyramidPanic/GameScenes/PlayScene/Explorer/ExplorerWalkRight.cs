@@ -40,8 +40,8 @@ namespace PyramidPanic
         {
             if (this.explorer.Position.X > 640 - 32)
             {
-                this.explorer.State = this.explorer.WalkLeft;
-                this.explorer.WalkLeft.Initialize();
+               // this.explorer.State = this.explorer.WalkLeft;
+               // this.explorer.WalkLeft.Initialize();
             }
             this.explorer.Position += this.velocity;
             this.destinationRectangle.X = (int)this.explorer.Position.X;

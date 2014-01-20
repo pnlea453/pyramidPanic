@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace PyramidPanic
 {
-    public class Explorer : IAnimatedSprite
+    public class Beetle : IAnimatedSprite
     {
         //Fields
         private PyramidePanic game;
@@ -21,34 +21,20 @@ namespace PyramidPanic
         private int speed = 2;
         private Vector2 position;
 
-        // Maak van iedere toestand (state) een field
-        //private ExplorerWalkUp walkUp;
-        //private ExplorerWalkDown walkDown;
-        //private ExplorerWalkLeft walkLeft;
-        private ExplorerWalkRight walkRight;
+        //Fields
+        private WalkDown walkDown;
+        private WalkUp walkUp;
 
         //Properties
-        /*
-        public ExplorerWalkUp WalkUp
-        {
-            get { return this.walkUp; }
-        }
-
-        public ExplorerWalkDown WalkDown
+        public WalkDown WalkDown
         {
             get { return this.walkDown; }
         }
-         * */
-        public ExplorerWalkRight WalkRight
+
+        public WalkUp WalkUp
         {
-            get { return this.walkRight; }
+            get { return this.walkUp; }
         }
-        /*
-        public ExplorerWalkLeft WalkLeft
-        {
-            get { return this.walkLeft; }
-        }
-         */
         public Vector2 Position
         {
             get { return this.position; }
@@ -76,16 +62,14 @@ namespace PyramidPanic
         }
 
         //Constructor
-        public Explorer (PyramidePanic game, Vector2 position) 
+        public Beetle(PyramidePanic game, Vector2 position)
         {
             this.game = game;
             this.position = position;
-            this.texture = game.Content.Load<Texture2D>(@"Explorer\Explorer");
-            //this.walkUp = new ExplorerWalkUp(this);
-            //this.walkDown = new ExplorerWalkDown(this);
-            this.walkRight = new ExplorerWalkRight(this);
-           // this.walkLeft = new ExplorerWalkLeft(this);
-            this.state = this.walkRight;
+            this.texture = game.Content.Load<Texture2D>(@"Beetle\Beetle");
+            this.walkUp = new WalkUp(this);
+            this.walkDown = new WalkDown(this);
+            this.state = this.walkUp;
 
         }
 
@@ -94,7 +78,7 @@ namespace PyramidPanic
         //Update
         public void Update(GameTime gameTime)
         {
-           
+
             this.state.Update(gameTime);
 
         }
@@ -109,3 +93,4 @@ namespace PyramidPanic
 
     }
 }
+

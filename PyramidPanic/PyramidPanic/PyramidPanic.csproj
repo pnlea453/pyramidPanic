@@ -113,6 +113,7 @@
     <Compile Include="GameScenes\GameOverScene\GameOverScene.cs" />
     <Compile Include="GameScenes\HelpScene\HelpScene.cs" />
     <Compile Include="GameScenes\LoadScene\LoadScene.cs" />
+    <Compile Include="GameScenes\PlayScene\Beetle\Beetle.cs" />
     <Compile Include="GameScenes\PlayScene\Explorer\Explorer.cs" />
     <Compile Include="GameScenes\PlayScene\Beetle\IEntityState.cs" />
     <Compile Include="GameScenes\PlayScene\Beetle\WalkDown.cs" />
