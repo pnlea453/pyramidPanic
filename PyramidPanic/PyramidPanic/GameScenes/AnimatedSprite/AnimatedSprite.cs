@@ -20,13 +20,14 @@ namespace PyramidPanic
        protected Rectangle destinationRectangle, sourceRectangle;
        private float timer = 0f;
        protected SpriteEffects effect;
+       protected int imageNumber = 2; // Loopt vam 0 t/m 3
 
        //De constructor
        public AnimatedSprite(IAnimatedSprite iAnimatedSprite)
        {
 
            this.iAnimatedSprite = iAnimatedSprite;
-           this.sourceRectangle = new Rectangle(0, 0, 32, 32);
+           this.sourceRectangle = new Rectangle(this.imageNumber * 32, 0, 32, 32);
            
            this.effect = SpriteEffects.None;
        }

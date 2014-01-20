@@ -26,6 +26,7 @@ namespace PyramidPanic
         //private ExplorerWalkDown walkDown;
         //private ExplorerWalkLeft walkLeft;
         private ExplorerWalkRight walkRight;
+        private ExplorerIdle idle;
 
         //Properties
         /*
@@ -42,6 +43,11 @@ namespace PyramidPanic
         public ExplorerWalkRight WalkRight
         {
             get { return this.walkRight; }
+        }
+           
+        public ExplorerIdle Idle
+        {
+            get { return this.idle; }
         }
         /*
         public ExplorerWalkLeft WalkLeft
@@ -85,7 +91,8 @@ namespace PyramidPanic
             //this.walkDown = new ExplorerWalkDown(this);
             this.walkRight = new ExplorerWalkRight(this);
            // this.walkLeft = new ExplorerWalkLeft(this);
-            this.state = this.walkRight;
+            this.idle = new ExplorerIdle(this);
+            this.state = this.idle;
 
         }
 
