@@ -40,10 +40,12 @@ namespace PyramidPanic
 
         public new void Update(GameTime gameTime)
         {
-            if (this.explorer.Position.X > 640 - 32)
+            if (this.explorer.Position.X < 0)
             {
-               // this.explorer.State = this.explorer.WalkLeft;
-               // this.explorer.WalkLeft.Initialize();
+                this.explorer.State = this.explorer.Idle;
+                this.explorer.Idle.Initialize();
+                this.explorer.Idle.Effect = SpriteEffects.FlipHorizontally;
+                this.explorer.Position += this.velocity;
             }
             this.explorer.Position -= this.velocity;
             this.destinationRectangle.X = (int)this.explorer.Position.X;

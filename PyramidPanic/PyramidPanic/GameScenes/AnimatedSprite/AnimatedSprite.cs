@@ -21,6 +21,7 @@ namespace PyramidPanic
        private float timer = 0f;
        protected SpriteEffects effect;
        protected int imageNumber = 2; // Loopt vam 0 t/m 3
+       protected float rotation = 0f;
 
        //De constructor
        public AnimatedSprite(IAnimatedSprite iAnimatedSprite)
@@ -64,7 +65,7 @@ namespace PyramidPanic
                                       this.destinationRectangle,
                                       this.sourceRectangle,
                                       Color.White,
-                                      0f,
+                                      this.rotation,
                                       Vector2.Zero,
                                       this.effect,
                                       0f);

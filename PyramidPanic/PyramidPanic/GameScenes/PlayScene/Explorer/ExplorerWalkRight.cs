@@ -45,6 +45,7 @@ namespace PyramidPanic
                 this.explorer.State = this.explorer.Idle;
                 this.explorer.Idle.Initialize();
                 this.explorer.Idle.Effect = SpriteEffects.None;
+                this.explorer.Position -= this.velocity;
             }
             this.explorer.Position += this.velocity;
             this.destinationRectangle.X = (int)this.explorer.Position.X;
