@@ -28,6 +28,8 @@ namespace PyramidPanic
             this.explorer = explorer;
             this.destinationRectangle = new Rectangle((int)this.explorer.Position.X, (int)this.explorer.Position.Y, 32, 32);
             this.velocity = new Vector2(this.explorer.Speed, 0f);
+
+            
         }
 
         public void Initialize()
@@ -40,12 +42,21 @@ namespace PyramidPanic
         {
             if (this.explorer.Position.X > 640 - 32)
             {
-               // this.explorer.State = this.explorer.WalkLeft;
-               // this.explorer.WalkLeft.Initialize();
+                this.explorer.State = this.explorer.Idle;
+                this.explorer.Idle.Initialize();
+                this.explorer.Idle.Effect = SpriteEffects.None;
             }
             this.explorer.Position += this.velocity;
             this.destinationRectangle.X = (int)this.explorer.Position.X;
             this.destinationRectangle.Y = (int)this.explorer.Position.Y;
+            //Als de right knop wordt losgelaten, dan moet de explorer weer in de toestand Idle
+            if (Input.EdgeDetectKeyUp(Keys.Right))
+            {
+                this.explorer.State = this.explorer.Idle;
+                this.explorer.Idle.Initialize();
+                this.explorer.Idle.Effect = SpriteEffects.None;
+            }
+
             base.Update(gameTime);
         }
 

@@ -16,27 +16,19 @@ namespace PyramidPanic
     // Dit is een toestands class (dus moet hij de interface implenteren
     // Deze class belooft dan plechtig dat hij de methods uit de interface heeft (toepast)
 
-    public class ExplorerIdle : AnimatedSprite, IEntityState
+    public class ExplorerWalkLeft : AnimatedSprite, IEntityState
     {
         //Fields
         private Explorer explorer;
         private Vector2 velocity;
-        private int imageNumber = 1;
-        
-
-        //properties
-        public SpriteEffects Effect
-        {
-            set { this.effect = value; }
-        }
 
         //Constructor
-        public ExplorerIdle (Explorer explorer) : base(explorer)
+        public ExplorerWalkLeft (Explorer explorer) : base(explorer)
         {
             this.explorer = explorer;
             this.destinationRectangle = new Rectangle((int)this.explorer.Position.X, (int)this.explorer.Position.Y, 32, 32);
-            this.sourceRectangle = new Rectangle(this.imageNumber * 32, 0, 32, 32);
             this.velocity = new Vector2(this.explorer.Speed, 0f);
+            this.effect = SpriteEffects.FlipHorizontally;
             
         }
 
@@ -48,17 +40,24 @@ namespace PyramidPanic
 
         public new void Update(GameTime gameTime)
         {
-           //Bij het indrukken van de Right knop moet decimal toestand van de explorer veranderen in 
-            if (Input.EdgeDetectKeyDown(Keys.Right))
+            if (this.explorer.Position.X > 640 - 32)
             {
-                this.explorer.State = this.explorer.WalkRight;
-                this.explorer.WalkRight.Initialize();
+               // this.explorer.State = this.explorer.WalkLeft;
+               // this.explorer.WalkLeft.Initialize();
             }
-            else if (Input.EdgeDetectKeyDown(Keys.Left))
+            this.explorer.Position -= this.velocity;
+            this.destinationRectangle.X = (int)this.explorer.Position.X;
+            this.destinationRectangle.Y = (int)this.explorer.Position.Y;
+            //Als de right knop wordt losgelaten, dan moet de explorer weer in de toestand Idle
+            if (Input.EdgeDetectKeyUp(Keys.Left))
             {
-                this.explorer.State = this.explorer.WalkLeft;
-                this.explorer.WalkLeft.Initialize();
+                this.explorer.State = this.explorer.Idle;
+                this.explorer.Idle.Initialize();
+                this.explorer.Idle.Effect = SpriteEffects.FlipHorizontally;
+                
             }
+
+            base.Update(gameTime);
         }
 
         public new void Draw(GameTime gameTime)

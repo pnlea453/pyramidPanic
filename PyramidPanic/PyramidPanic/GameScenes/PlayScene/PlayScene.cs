@@ -20,7 +20,7 @@ namespace PyramidPanic
         private Scorpion scorpion, scorpion1;
         private Beetle beetle, beetle1;
         private Explorer explorer;
-        //private Explorer explorer;
+        
 
         // Constructor van de StartScene-class krijgt een object game mee van he type PyramidPanic
         public PlayScene(PyramidePanic game)
@@ -43,7 +43,7 @@ namespace PyramidPanic
             this.beetle = new Beetle(this.game, new Vector2(100f, 300f));
             this.beetle1 = new Beetle(this.game, new Vector2(150f, 350f));
             this.explorer = new Explorer(this.game, new Vector2(0f, 240f));
-            //this.explorer = new Explorer(this.game);
+            
         }
         //Update methode. Deze methode wordt normaal 60 maal per seconde aangeroepen.
         // en update alle variabelen, methods enz........
@@ -58,7 +58,7 @@ namespace PyramidPanic
             this.beetle.Update(gameTime);
             this.beetle1.Update(gameTime);
             this.explorer.Update(gameTime);
-           // this.explorer.Update(gameTime);
+           
         }
         // Draw methode. Deze methode wordt normaal 60 maal per seconde aangeroepen en
         // tekent de tectures op het canvas.
@@ -71,7 +71,7 @@ namespace PyramidPanic
             this.beetle.Draw(gameTime);
             this.beetle1.Draw(gameTime);
             this.explorer.Draw(gameTime);
-           // this.explorer.Draw(gameTime);
+           
 
         }
     }

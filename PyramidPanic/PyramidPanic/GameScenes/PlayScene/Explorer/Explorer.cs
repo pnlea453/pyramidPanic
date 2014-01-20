@@ -24,7 +24,7 @@ namespace PyramidPanic
         // Maak van iedere toestand (state) een field
         //private ExplorerWalkUp walkUp;
         //private ExplorerWalkDown walkDown;
-        //private ExplorerWalkLeft walkLeft;
+        private ExplorerWalkLeft walkLeft;
         private ExplorerWalkRight walkRight;
         private ExplorerIdle idle;
 
@@ -49,12 +49,12 @@ namespace PyramidPanic
         {
             get { return this.idle; }
         }
-        /*
+        
         public ExplorerWalkLeft WalkLeft
         {
             get { return this.walkLeft; }
         }
-         */
+         
         public Vector2 Position
         {
             get { return this.position; }
@@ -90,7 +90,7 @@ namespace PyramidPanic
             //this.walkUp = new ExplorerWalkUp(this);
             //this.walkDown = new ExplorerWalkDown(this);
             this.walkRight = new ExplorerWalkRight(this);
-           // this.walkLeft = new ExplorerWalkLeft(this);
+            this.walkLeft = new ExplorerWalkLeft(this);
             this.idle = new ExplorerIdle(this);
             this.state = this.idle;
 
