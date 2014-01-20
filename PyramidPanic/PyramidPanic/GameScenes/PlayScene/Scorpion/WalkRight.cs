@@ -20,12 +20,14 @@ namespace PyramidPanic
     {
         //Fields
         private Scorpion scorpion;
+        private Vector2 velocity;
 
         //Constructor
         public WalkRight (Scorpion scorpion) : base(scorpion)
         {
             this.scorpion = scorpion;
             this.destinationRectangle = new Rectangle((int)this.scorpion.Position.X, (int)this.scorpion.Position.Y, 32, 32);
+            this.velocity = new Vector2(this.scorpion.Speed, 0f);
         }
 
         public void Initialize()
@@ -41,7 +43,7 @@ namespace PyramidPanic
                 this.scorpion.State = new WalkLeft(this.scorpion);
                 this.scorpion.WalkLeft.Initialize();
             }
-            this.scorpion.Position += new Vector2(this.scorpion.Speed, 0f);
+            this.scorpion.Position += this.velocity;
             this.destinationRectangle.X = (int)this.scorpion.Position.X;
             this.destinationRectangle.Y = (int)this.scorpion.Position.Y;
             base.Update(gameTime);
