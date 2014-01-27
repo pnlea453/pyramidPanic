@@ -16,6 +16,7 @@ namespace PyramidPanic
     {
         // Elke toestand van Beetle class implementeert (past toe) de interface IBeetletate
         // Deze interface eist dan dat de toestanden een Update en een draw methode hebben.
+        void Initialize();
         void Update(GameTime gameTime);
         void Draw(GameTime gameTime);
     }
