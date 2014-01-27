@@ -16,31 +16,23 @@ namespace PyramidPanic
     // Dit is een toestands class (dus moet hij de interface implenteren
     // Deze class belooft dan plechtig dat hij de methods uit de interface heeft (toepast)
 
-    public class ExplorerIdleWalk : AnimatedSprite, IEntityState
+    public class ExplorerWalkUp : AnimatedSprite, IEntityState
     {
         //Fields
         private Explorer explorer;
         private Vector2 velocity;
-        private int imageNumber = 1;
-        
-
-        //properties
-        public SpriteEffects Effect
-        {
-            set { this.effect = value; }
-        }
-        public float Rotation
-        {
-            set { this.rotation = value; }
-        }
 
         //Constructor
-        public ExplorerIdleWalk (Explorer explorer) : base(explorer)
+        public ExplorerWalkUp (Explorer explorer) : base(explorer)
         {
+            
             this.explorer = explorer;
             this.destinationRectangle = new Rectangle((int)this.explorer.Position.X, (int)this.explorer.Position.Y, 32, 32);
-            this.sourceRectangle = new Rectangle(this.imageNumber * 32, 0, 32, 32);
-            this.velocity = new Vector2(this.explorer.Speed, 0f);
+            this.velocity = new Vector2(0f, this.explorer.Speed);
+            this.effect = SpriteEffects.FlipHorizontally;
+            this.rotation = (float)Math.PI / 2;
+           
+
             
         }
 
@@ -52,35 +44,27 @@ namespace PyramidPanic
 
         public new void Update(GameTime gameTime)
         {
-           //Bij het indrukken van de Right knop moet decimal toestand van de explorer veranderen in 
-            if (Input.EdgeDetectKeyUp(Keys.Right))
+            this.explorer.Position -= this.velocity;
+            if (this.explorer.Position.Y < 0 + 16)
             {
-                this.explorer.State = this.explorer.Idle;
-                this.explorer.Idle.Effect = SpriteEffects.None;
-                this.explorer.Idle.Rotation = 0f;
-
-
-            }
-            else if (Input.EdgeDetectKeyUp(Keys.Left))
-            {
-                this.explorer.State = this.explorer.Idle;
-                this.explorer.Idle.Effect = SpriteEffects.FlipHorizontally;
-                this.explorer.Idle.Rotation = 0f;
+                this.explorer.Position += this.velocity;
+                this.explorer.State = this.explorer.IdleWalk;
+                this.explorer.IdleWalk.Effect = SpriteEffects.FlipHorizontally;
+                this.explorer.IdleWalk.Rotation = (float)Math.PI / 2;
+                
                 
             }
-            else if (Input.EdgeDetectKeyUp(Keys.Down))
-            {
-                this.explorer.State = this.explorer.Idle;
-                this.explorer.Idle.Effect = SpriteEffects.None;
-                this.explorer.Idle.Rotation = (float)Math.PI / 2;
-            }
-            else if (Input.EdgeDetectKeyUp(Keys.Up))
+           
+            //Als de right knop wordt losgelaten, dan moet de explorer weer in de toestand Idle
+            if (Input.EdgeDetectKeyUp(Keys.Up))
             {
                 this.explorer.State = this.explorer.Idle;
                 this.explorer.Idle.Effect = SpriteEffects.FlipHorizontally;
                 this.explorer.Idle.Rotation = (float)Math.PI / 2;
+                
+                
             }
-            // Zorgt voor de animatie. Roept de Update(gameTime gameTime method aan van de AnimatedSprite class
+
             base.Update(gameTime);
         }
 

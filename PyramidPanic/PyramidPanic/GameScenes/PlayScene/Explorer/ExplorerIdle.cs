@@ -68,6 +68,11 @@ namespace PyramidPanic
                 this.explorer.State = this.explorer.WalkDown;
                 this.explorer.WalkDown.Initialize();
             }
+            else if (Input.EdgeDetectKeyDown(Keys.Up))
+            {
+                this.explorer.State = this.explorer.WalkUp;
+                this.explorer.WalkUp.Initialize();
+            }
             
         }
 
