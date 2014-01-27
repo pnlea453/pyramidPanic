@@ -58,12 +58,18 @@ namespace PyramidPanic
         public Vector2 Position
         {
             get { return this.position; }
-            set { this.position = value; }
+            set { this.position = value;
+            this.state.Initialize();
+            }
         }
 
         public IEntityState State
         {
-            set { this.state = value; }
+            set
+            {
+            this.state = value;
+            this.state.Initialize();
+            }
         }
 
         public PyramidePanic Game
