@@ -16,6 +16,7 @@ namespace PyramidPanic
     {
        //Fields
        private IAnimatedSprite iAnimatedSprite;
+       private Vector2 pivot;
        
        protected Rectangle destinationRectangle, sourceRectangle;
        private float timer = 0f;
@@ -26,6 +27,7 @@ namespace PyramidPanic
        //De constructor
        public AnimatedSprite(IAnimatedSprite iAnimatedSprite)
        {
+           this.pivot = new Vector2(16f, 16);
 
            this.iAnimatedSprite = iAnimatedSprite;
            this.sourceRectangle = new Rectangle(this.imageNumber * 32, 0, 32, 32);
@@ -66,7 +68,7 @@ namespace PyramidPanic
                                       this.sourceRectangle,
                                       Color.White,
                                       this.rotation,
-                                      Vector2.Zero,
+                                      this.pivot,
                                       this.effect,
                                       0f);
        }
