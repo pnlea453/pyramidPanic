@@ -40,14 +40,14 @@ namespace PyramidPanic
 
         public new void Update(GameTime gameTime)
         {
-            if (this.explorer.Position.X < 0)
+             this.explorer.Position -= this.velocity;
+            if (this.explorer.Position.X < 16 )
             {
-                this.explorer.State = this.explorer.Idle;
-                this.explorer.Idle.Initialize();
-                this.explorer.Idle.Effect = SpriteEffects.FlipHorizontally;
+                this.explorer.State = this.explorer.IdleWalk;
+                this.explorer.IdleWalk.Effect = SpriteEffects.FlipHorizontally;
                 this.explorer.Position += this.velocity;
             }
-            this.explorer.Position -= this.velocity;
+           
             //Als de right knop wordt losgelaten, dan moet de explorer weer in de toestand Idle
             if (Input.EdgeDetectKeyUp(Keys.Left))
             {

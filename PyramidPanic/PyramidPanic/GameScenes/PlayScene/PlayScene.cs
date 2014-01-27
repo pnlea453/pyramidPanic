@@ -42,7 +42,7 @@ namespace PyramidPanic
             this.scorpion1 = new Scorpion(this.game, new Vector2(350f, 238f));
             this.beetle = new Beetle(this.game, new Vector2(100f, 300f));
             this.beetle1 = new Beetle(this.game, new Vector2(150f, 350f));
-            this.explorer = new Explorer(this.game, new Vector2(0f, 240f));
+            this.explorer = new Explorer(this.game, new Vector2(304f, 240f));
             
         }
         //Update methode. Deze methode wordt normaal 60 maal per seconde aangeroepen.

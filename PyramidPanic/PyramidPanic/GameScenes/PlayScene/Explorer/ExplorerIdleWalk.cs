@@ -16,7 +16,7 @@ namespace PyramidPanic
     // Dit is een toestands class (dus moet hij de interface implenteren
     // Deze class belooft dan plechtig dat hij de methods uit de interface heeft (toepast)
 
-    public class ExplorerIdle : AnimatedSprite, IEntityState
+    public class ExplorerIdleWalk : AnimatedSprite, IEntityState
     {
         //Fields
         private Explorer explorer;
@@ -35,7 +35,7 @@ namespace PyramidPanic
         }
 
         //Constructor
-        public ExplorerIdle (Explorer explorer) : base(explorer)
+        public ExplorerIdleWalk (Explorer explorer) : base(explorer)
         {
             this.explorer = explorer;
             this.destinationRectangle = new Rectangle((int)this.explorer.Position.X, (int)this.explorer.Position.Y, 32, 32);
@@ -53,22 +53,29 @@ namespace PyramidPanic
         public new void Update(GameTime gameTime)
         {
            //Bij het indrukken van de Right knop moet decimal toestand van de explorer veranderen in 
-            if (Input.EdgeDetectKeyDown(Keys.Right))
+            if (Input.EdgeDetectKeyUp(Keys.Right))
             {
-                this.explorer.State = this.explorer.WalkRight;
-                this.explorer.WalkRight.Initialize();
+                this.explorer.State = this.explorer.Idle;
+                this.explorer.Idle.Effect = SpriteEffects.None;
+                this.explorer.Idle.Rotation = 0f;
+
+
             }
-            else if (Input.EdgeDetectKeyDown(Keys.Left))
+            else if (Input.EdgeDetectKeyUp(Keys.Left))
             {
-                this.explorer.State = this.explorer.WalkLeft;
-                this.explorer.WalkLeft.Initialize();
+                this.explorer.State = this.explorer.Idle;
+                this.explorer.Idle.Effect = SpriteEffects.None;
+                this.explorer.Idle.Rotation = 0f;
+                
             }
-            else if (Input.EdgeDetectKeyDown(Keys.Down))
+            else if (Input.EdgeDetectKeyUp(Keys.Down))
             {
-                this.explorer.State = this.explorer.WalkDown;
-                this.explorer.WalkDown.Initialize();
+                this.explorer.State = this.explorer.Idle;
+                this.explorer.Idle.Effect = SpriteEffects.None;
+                this.explorer.Idle.Rotation = (float)Math.PI / 2;
             }
-            
+            // Zorgt voor de animatie. Roept de Update(gameTime gameTime method aan van de AnimatedSprite class
+            base.Update(gameTime);
         }
 
         public new void Draw(GameTime gameTime)
