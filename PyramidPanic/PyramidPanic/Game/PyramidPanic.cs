@@ -10,8 +10,10 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
+//Namespace
 namespace PyramidPanic
 {
+    // Geeft de xna framework mee
     public class PyramidePanic : Microsoft.Xna.Framework.Game
     {
         //Fields 
@@ -121,6 +123,7 @@ namespace PyramidPanic
             Content.RootDirectory = "Content";
         }
 
+        //initialze method
         protected override void Initialize()
         {
            // Verander de titel van het canvas
@@ -142,6 +145,7 @@ namespace PyramidPanic
         }
 
      
+        // loadcontent method
         protected override void LoadContent()
         {
           // Een spritebatch is nodig voor het tekenen van tetures op het canvas
@@ -163,13 +167,13 @@ namespace PyramidPanic
             
         }
 
-       
+       //unloadcontent method
         protected override void UnloadContent()
         {
           
         }
 
-        
+        //update method
         protected override void Update(GameTime gameTime)
         {
             // Zorgt dat het spel stopt wanneer je op de gamepad button Back indrukt
@@ -186,7 +190,7 @@ namespace PyramidPanic
             base.Update(gameTime);
         }
 
-        
+        //draw method
         protected override void Draw(GameTime gameTime)
         {
             // Geeft de achtergrond een kleur

@@ -10,8 +10,10 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
+//namespace
 namespace PyramidPanic
 {
+    //classe naam
    public class Image
     {
        //Fields
@@ -39,14 +41,18 @@ namespace PyramidPanic
        // maak een property voor het rectangle field
        public Rectangle Rectangle
        {
+           // getter voor rectangle
            get {return this.rectangle;}
        }
 
        //Constructor
        public Image(PyramidePanic game, string pathNameAsset, Vector2 postion)
        {
+           // game instantie
            this.game = game;
+           // texture load pathnameasset
            this.texture = game.Content.Load<Texture2D>(pathNameAsset);
+           // position van de rectangle
            this.rectangle = new Rectangle((int)postion.X,
                                           (int)postion.Y,
                                           this.texture.Width,
@@ -63,7 +69,7 @@ namespace PyramidPanic
        //Draw
        public void Draw(GameTime gameTime)
        {
-
+           // teken de texture op het scherm
            this.game.SpriteBatch.Draw(this.texture, this.rectangle, this.color);
         
        }

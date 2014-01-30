@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
-
+// namespace
 namespace PyramidPanic
 {
    public class StartScene : IState // De class StartScene implementeert de interface IState

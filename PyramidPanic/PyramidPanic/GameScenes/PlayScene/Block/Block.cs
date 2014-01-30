@@ -10,13 +10,34 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
-//Namespace 
+//Namespace
 namespace PyramidPanic
 {
-    // geeft de update en draw methode mee met de gameTime method
-   public interface IState
+    public class Block : Image
     {
-       void Update(GameTime gameTime);
-       void Draw(GameTime gameTime);
+        //Fields
+
+
+
+        //Properties
+
+
+
+        //constructor
+        public Block(PyramidePanic game, string pathNameAsset, Vector2 postion) : base (game, pathNameAsset, postion )
+       {
+
+       }
+
+        //Update
+        
+
+
+        //Draw 
+        public void Draw(GameTime gameTime)
+        {
+            // base draw
+            base.Draw(gameTime);
+        }
     }
 }

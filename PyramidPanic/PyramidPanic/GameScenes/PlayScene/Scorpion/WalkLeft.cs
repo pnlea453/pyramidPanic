@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
-
+//Namespace
 namespace PyramidPanic
 {
     // Dit is een toestands class (dus moet hij de interface implenteren
@@ -19,40 +19,57 @@ namespace PyramidPanic
     public class WalkLeft : AnimatedSprite, IEntityState
     {
         //Fields
+
+        //scorpion variable
         private Scorpion scorpion;
+        //vector 2 variable
         private Vector2 velocity;
              
 
         //Constructor
         public WalkLeft(Scorpion scorpion) : base(scorpion)
         {
+            // scorpion
             this.scorpion = scorpion;
+            // effect veranderd flipt
             this.effect = SpriteEffects.FlipHorizontally;
+            // nieuwe rectangle 
             this.destinationRectangle = new Rectangle((int)this.scorpion.Position.X, (int)this.scorpion.Position.Y, 32, 32);
+            //nieuwew postion vector 2
             this.velocity = new Vector2(this.scorpion.Speed, 0f);
         }
-
+        //initialize method
         public void Initialize()
         {
+            //x positie
             this.destinationRectangle.X = (int)this.scorpion.Position.X;
+            //y positie
             this.destinationRectangle.Y = (int)this.scorpion.Position.Y;
         }
-
+        //update method
         public new void Update(GameTime gameTime)
         {
+            // als de x kleiner is dan 0
             if (this.scorpion.Position.X < 0 + 16)
             {
+                // nieuwe state wordt aangeroepen
                 this.scorpion.State = new WalkRight(this.scorpion);
+                //initialize
                 this.scorpion.WalkRight.Initialize();
             }
+            // vector 2 gaat ervanaf
             this.scorpion.Position -= this.velocity;
+            // x positie
             this.destinationRectangle.X = (int)this.scorpion.Position.X;
+            // y positie
             this.destinationRectangle.Y = (int)this.scorpion.Position.Y;
+            //base update
             base.Update(gameTime);
         }
-
+        //draw method
         public new void Draw(GameTime gameTime)
         {
+            //base draw
             base.Draw(gameTime);
         }
     }

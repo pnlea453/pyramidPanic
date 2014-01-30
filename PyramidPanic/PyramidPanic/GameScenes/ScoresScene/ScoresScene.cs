@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
+//namespace
 namespace PyramidPanic 
 {
     public class ScoresScene : IState
@@ -20,6 +21,7 @@ namespace PyramidPanic
         // Constructor van de StartScene-class krijgt een object game mee van he type PyramidPanic
         public ScoresScene(PyramidePanic game)
         {
+            //game instantie
             this.game = game;
 
         }
@@ -39,8 +41,10 @@ namespace PyramidPanic
         // en update alle variabelen, methods enz........
         public void Update(GameTime GameTime)
         {
+            // toets knop b
             if (Input.EdgeDetectKeyDown(Keys.B))
             {
+                //scene
                 this.game.IState = this.game.StartScene;
             }
 
@@ -49,7 +53,7 @@ namespace PyramidPanic
         // tekent de tectures op het canvas.
         public void Draw(GameTime GameTime)
         {
-
+            //achtergrondkleur
             this.game.GraphicsDevice.Clear(Color.Black);
 
         }
