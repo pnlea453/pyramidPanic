@@ -27,6 +27,8 @@ namespace PyramidPanic
         private Explorer explorer;
         //block
         private Block block1 , blockhor, blockvert, door, wall1, wall2;
+
+        private Level level;
         
         
 
@@ -71,6 +73,8 @@ namespace PyramidPanic
             this.wall1 = new Block(this.game, @"Block\Wall1", new Vector2(128, 0f));
             //nieuwe block
             this.wall2 = new Block(this.game, @"Block\Wall2", new Vector2(160, 0f));
+            // nieuwe level
+            this.level = new Level(this.game, 0);
 
 
 
@@ -127,6 +131,7 @@ namespace PyramidPanic
             this.wall1.Draw(gameTime);
             //draw block
             this.wall2.Draw(gameTime);
+            this.level.Draw(gameTime);
 
            
 
