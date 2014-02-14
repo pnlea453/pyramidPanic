@@ -22,6 +22,10 @@ namespace PyramidPanic
         private Stream stream;
         private List<String> lines;
         private Block[,] blocks;
+        private Image background;
+        private Explorer explorer;
+        private List<Scorpion> scorpions;
+        private List<Beetle> beetles;
 
         //Properties
         public PyramidePanic Game
@@ -48,12 +52,24 @@ namespace PyramidPanic
 
 
         //Update
-
+        public void Update(GameTime gameTime)
+        {
+            foreach (Scorpion scorpion in this.scorpions)
+            {
+                scorpion.Update(gameTime);
+            }
+            foreach (Beetle beetle in this.beetles)
+            {
+                beetle.Update(gameTime);
+            }
+            this.explorer.Update(gameTime);
+        }
 
 
         //Draw
         public void Draw(GameTime gameTime)
         {
+            this.background.Draw(gameTime);
             for (int row = 0; row < this.blocks.GetLength(1); row++)
             {
                 for (int column = 0; column < this.blocks.GetLength(0); column++)
@@ -61,11 +77,24 @@ namespace PyramidPanic
                     this.blocks[column, row].Draw(gameTime);
                 }
             }
+            foreach (Scorpion scorpion in this.scorpions)
+            {
+                scorpion.Draw(gameTime);
+
+            }
+            foreach (Beetle beetle in this.beetles)
+            {
+                beetle.Draw(gameTime);
+
+            }
+            this.explorer.Draw(gameTime);
         }
 
 
         private void LoadAssets()
         {
+            this.beetles = new List<Beetle>();
+            this.scorpions = new List<Scorpion>();
             // slaat string op van elke regel van de textbestand
             this.lines = new List<string>();
 
@@ -103,14 +132,34 @@ namespace PyramidPanic
         {
             switch (blockElement)
             {
+                case 's':
+                    this.scorpions.Add(new Scorpion(this.game, new Vector2(x + 16f, y + 16f)));
+                    return new Block(this.game, @"Block\Transparant", new Vector2(x, y));
+                case 'b':
+                    this.beetles.Add(new Beetle(this.game, new Vector2(x + 16f, y + 16f)));
+                    return new Block(this.game, @"Block\Transparant", new Vector2(x, y));
+                case 'E':
+                    this.explorer = new Explorer(this.game, new Vector2(x + 16f, y + 16f));
+                    return new Block(this.game, @"Block\Transparant", new Vector2(x, y));
                 case 'x':
+                    return new Block(this.game, @"Block\Block", new Vector2(x, y));
+                case 'y':
+                    return new Block(this.game, @"Block\Wall1", new Vector2(x, y));
+                case 'z':
+                    return new Block(this.game, @"Block\Wall2", new Vector2(x, y));
+                case 'v':
+                    return new Block(this.game, @"Block\Block_hor", new Vector2(x, y));
+                case 'w':
+                    return new Block(this.game, @"Block\Block_vert", new Vector2(x, y));
+                case 'u':
+                    return new Block(this.game, @"Block\Door", new Vector2(x, y));
+                case '@':
+                    this.background = new Image(this.game, @"Background\Background2", new Vector2(x, y));
                     return new Block(this.game, @"Block\Block", new Vector2(x, y));
                 case '.':
                     return new Block(this.game, @"Block\Transparant", new Vector2(x, y));
                 default:
                     return new Block(this.game, @"Block\Transparant", new Vector2(x, y));
-
-
             }
         }
     }
