@@ -47,7 +47,7 @@ namespace PyramidPanic
         public new void Update(GameTime gameTime)
         {
             // als de x groter wordt dan 640
-            if (this.scorpion.Position.X > 640 - 16)
+            if (this.scorpion.Position.X > this.scorpion.RightBorder)
             {
                 // walkleft state
                 this.scorpion.State = new WalkLeft(this.scorpion);

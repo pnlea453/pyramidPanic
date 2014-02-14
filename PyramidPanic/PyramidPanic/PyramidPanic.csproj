@@ -131,6 +131,7 @@
     <Compile Include="GameScenes\PlayScene\Level\Level.cs" />
     <Compile Include="GameScenes\PlayScene\PlayScene.cs" />
     <Compile Include="GameScenes\PlayScene\Scorpion\Scorpion.cs" />
+    <Compile Include="GameScenes\PlayScene\Scorpion\ScorpionManager.cs" />
     <Compile Include="GameScenes\PlayScene\Scorpion\WalkLeft.cs" />
     <Compile Include="GameScenes\PlayScene\Scorpion\WalkRight.cs" />
     <Compile Include="GameScenes\QuitScene\QuitScene.cs" />

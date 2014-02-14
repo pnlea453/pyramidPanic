@@ -50,7 +50,7 @@ namespace PyramidPanic
         public new void Update(GameTime gameTime)
         {
             // als de x kleiner is dan 0
-            if (this.scorpion.Position.X < 0 + 16)
+            if (this.scorpion.Position.X < this.scorpion.LeftBorder )
             {
                 // nieuwe state wordt aangeroepen
                 this.scorpion.State = new WalkRight(this.scorpion);

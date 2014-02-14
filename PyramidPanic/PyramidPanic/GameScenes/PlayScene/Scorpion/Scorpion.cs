@@ -36,7 +36,28 @@ namespace PyramidPanic
         //walkright
         private WalkRight walkRight;
 
+        private int rightBorder;
+        private int leftBorder;
+        private Rectangle collisionRect;
+
         //Properties
+        public int RightBorder
+        {
+            get { return this.rightBorder; }
+            set { this.rightBorder = value; }
+        }
+        public int LeftBorder
+        {
+            get { return this.leftBorder; }
+            set { this.leftBorder = value; }
+        }
+        public Rectangle CollisionRect
+        {
+            get {
+                this.collisionRect.X = (int)this.position.X;
+                this.collisionRect.Y = (int)this.position.Y;
+                return this.collisionRect; }
+        }
 
         //getter voor walkleft
         public WalkLeft WalkLeft
@@ -99,6 +120,8 @@ namespace PyramidPanic
             this.walkRight = new WalkRight(this);
             //state classe
             this.state = this.walkRight;
+            this.collisionRect = new Rectangle((int)this.position.X,(int)this.position.Y, 32, 32);
+           
 
         }
 
@@ -119,6 +142,7 @@ namespace PyramidPanic
         {
             // gamtime meegeven aan draw
             this.state.Draw(gameTime);
+            
         }
 
     }

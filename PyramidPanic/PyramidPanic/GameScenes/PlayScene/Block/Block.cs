@@ -16,16 +16,20 @@ namespace PyramidPanic
     public class Block : Image
     {
         //Fields
-
+        private bool passable;
 
 
         //Properties
-
+        public bool Passable
+        {
+            get { return passable; }
+        }
 
 
         //constructor
-        public Block(PyramidePanic game, string pathNameAsset, Vector2 postion) : base (game, pathNameAsset, postion )
+        public Block(PyramidePanic game, string pathNameAsset, Vector2 postion, bool passable) : base (game, pathNameAsset, postion )
        {
+           this.passable = passable;
 
        }
 
